@@ -10,7 +10,8 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
-    "clean": "turbo run clean"
+    "clean": "turbo run clean",
+    "run:cli": "pnpm --filter w3docs dev"
   },
   "devDependencies": {
     "turbo": "^2.9.14",
