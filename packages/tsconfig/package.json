@@ -1,0 +1,11 @@
+{
+  "name": "@w3docs/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "base.json"
+  ],
+  "scripts": {
+    "build": "echo 'tsconfig ready'"
+  }
+}
