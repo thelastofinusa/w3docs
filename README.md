@@ -1,6 +1,6 @@
-<!-- <p align="center" style="margin-top: 30px;">
-  <img src="https://raw.githubusercontent.com/w3docs/brand/main/logo.png" alt="w3docs logo" width="64" height="64" />
-</p> -->
+<p align="center" style="margin-top: 20px;">
+  <img src="https://w3docs.vercel.app/favicon.ico" alt="PushAI logo" width="64" height="64" />
+</p>
 
 <h1 align="center">w3docs</h1>
 
