@@ -48,7 +48,18 @@ export const metadata: Metadata = {
     images: [`${siteConfig.url}${imagePath("opengraph.png")}`],
     creator: `@${siteConfig.username}`,
   },
-  // icons: imagePath("logo.svg"),
+  icons: {
+    icon: [
+      {
+        url: imagePath("logo-black.svg"),
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: imagePath("logo-white.svg"),
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+  },
   manifest: `${siteConfig.url}${assetPath("site.webmanifest")}`,
 }
 

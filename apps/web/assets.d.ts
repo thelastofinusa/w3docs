@@ -17,6 +17,10 @@ declare module "@typest/nextjs" {
      ║   Image Assets   ║
      ╚══════════════════╝ */
   const imageAssets: {
+    readonly "logo-black.png": "/logo-black.png";
+    readonly "logo-black.svg": "/logo-black.svg";
+    readonly "logo-white.png": "/logo-white.png";
+    readonly "logo-white.svg": "/logo-white.svg";
     readonly "opengraph.png": "/opengraph.png";
   };
   type ImageKey = keyof typeof imageAssets;
