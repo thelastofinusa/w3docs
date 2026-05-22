@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import color from "chalk";
 import { Command } from "commander";
 
@@ -7,6 +5,9 @@ import pkg from "../package.json";
 import generateDocs from "./commands/docs";
 import showChains from "./commands/show";
 import { CONTRACT_TYPES } from "./lib/constants";
+import { devCommand } from "./commands/dev";
+import { buildCommand } from "./commands/build";
+import { previewCommand } from "./commands/preview";
 
 const { name, version, description } = pkg;
 
@@ -21,6 +22,21 @@ program
   .command("show")
   .description("show supported smart contract languages and chains")
   .action(async () => showChains());
+
+program
+  .command("dev")
+  .description("start the documentation development server")
+  .action(async () => await devCommand());
+
+program
+  .command("build")
+  .description("build the documentation for production")
+  .action(async () => await buildCommand());
+
+program
+  .command("preview")
+  .description("preview the production build locally")
+  .action(async () => await previewCommand());
 
 const generateCommand = program
   .command("init")

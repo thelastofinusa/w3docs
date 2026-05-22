@@ -4,7 +4,8 @@ import * as p from "@clack/prompts";
 
 import pkg from "../../package.json";
 import { CONTRACT_TYPES } from "../lib/constants";
-import { createSpinner, renderIntro, sleep } from "../lib/utils";
+import { scaffoldProject } from "../lib/scaffold";
+import { createSpinner, renderIntro } from "../lib/utils";
 
 const { name, description } = pkg;
 
@@ -99,40 +100,22 @@ export default async function generateDocs(initialLanguage?: string) {
 
     const spinner = createSpinner();
 
-    spinner.start(color.cyan("Fetching contract interface"));
-    await sleep(1500);
-
-    spinner.message(color.cyan("Generating documentation"));
-    await sleep(1200);
-
-    spinner.message(color.cyan("Scaffolding project"));
-    await sleep(800);
-
-    spinner.message(color.cyan("Installing dependencies"));
-    await sleep(2000);
-
-    spinner.stop(color.green("Project generated successfully."));
-
-    p.log.message(
-      [
-        `${color.cyan("◆")} ${color.bold("Language")}   ${color.gray(selectedContract.label)}`,
-        `${color.cyan("◆")} ${color.bold("Network")}    ${color.gray(chain)}`,
-        `${color.cyan("◆")} ${color.bold("Address")}    ${color.gray(address)}`,
-        `${color.cyan("◆")} ${color.bold("Directory")}  ${color.gray(`./${projectName}`)}`,
-      ].join("\n"),
-    );
-
-    p.outro(
-      [
-        `${color.cyan(`✓ Build complete. ${color.bold("Your on-chain interface is ready.")}`)}`,
-        "",
-        `${color.bold("Next steps:")}`,
-        ` ${color.cyan("$")} cd ${projectName}`,
-        ` ${color.cyan("$")} w3docs build`,
-        ` ${color.cyan("$")} w3docs dev`,
-      ].join("\n"),
-    );
+    try {
+      await scaffoldProject({
+        projectName,
+        chain,
+        address,
+        verified: true, // eventually will come from Etherscan
+        title: projectName, // or use a placeholder; later fetched from contract
+        language: selectedContract.label,
+      });
+    } catch (error: any) {
+      spinner.stop("Failed");
+      p.log.error(error.message);
+      process.exit(1);
+    }
   } catch (error: any) {
     p.outro(color.red(error.message));
+    process.exit(1);
   }
 }

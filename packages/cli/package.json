@@ -1,32 +1,37 @@
 {
   "name": "w3docs",
+  "version": "0.1.4",
   "description": "Document smart contracts with ease",
-  "version": "0.0.0",
-  "private": true,
+  "private": false,
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
     "w3docs": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsup src/index.ts",
-    "dev": "pnpm build && tsx src/index.ts",
+    "build": "tsup",
+    "dev": "pnpm build && node dist/index.js",
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist .turbo node_modules"
+    "prepublishOnly": "pnpm build",
+    "clean": "rm -rf dist .turbo node_modules",
+    "pushout": "npm publish",
+    "pushout-inc": "npm version patch --no-git-tag-version && pnpm pushout"
   },
   "dependencies": {
     "@clack/prompts": "^1.4.0",
-    "@w3docs/core": "workspace:*",
     "chalk": "^5.6.2",
     "commander": "^14.0.3",
+    "execa": "^9.6.1",
     "figlet": "^1.11.0",
     "gradient-string": "^3.0.0",
+    "handlebars": "^4.7.9",
     "ora": "^9.4.0"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.0.0",
-    "@w3docs/tsconfig": "workspace:*",
+    "fs-extra": "^11.3.5",
     "tsup": "^8.0.0",
     "tsx": "^4.22.3",
     "typescript": "^5.5.0"

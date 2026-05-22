@@ -1,7 +1,7 @@
 {
   "name": "@w3docs/core",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -10,10 +10,11 @@
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist .turbo node_modules"
+    "clean": "rm -rf dist .turbo node_modules",
+    "pushout": "npm publish --access public",
+    "pushout-inc": "npm version patch --no-git-tag-version && pnpm pushout"
   },
   "devDependencies": {
-    "@w3docs/tsconfig": "workspace:*",
     "tsup": "^8.0.0",
     "typescript": "^5.5.0"
   }

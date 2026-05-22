@@ -1,0 +1,17 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Layout from '@theme/Layout'
+import Home from '@docs/index.mdx'
+import Guide from '@docs/guide.mdx'
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/guide" element={<Layout><Guide /></Layout>} />
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>
+)

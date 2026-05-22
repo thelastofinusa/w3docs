@@ -1,0 +1,35 @@
+import './styles.css'
+import { type W3DocsConfig } from 'w3docs'
+import config from '../w3docs.config'
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      {/* Header */}
+      <header className="border-b border-border bg-card px-6 py-3 flex items-center justify-between sticky top-0 z-50">
+        <div className="flex items-center gap-4">
+          <a href="/" className="text-xl font-bold tracking-tight">w3docs</a>
+          <span className="text-sm text-muted-foreground">/ {config.chain}</span>
+        </div>
+        <nav className="flex gap-4">
+          {config.nav.map((item, idx) => (
+            <a key={idx} href={item.link} className="text-sm hover:text-primary transition">
+              {item.text}
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      {/* Main content */}
+      <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-8">
+        {children}
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-border py-6 text-center text-sm text-muted-foreground">
+        <p>{config.footer.message}</p>
+        <p className="mt-1">{config.footer.copyright}</p>
+      </footer>
+    </div>
+  )
+}
