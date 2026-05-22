@@ -1,29 +1,62 @@
-import { Geist, Geist_Mono } from "next/font/google"
+import { Metadata } from "next"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
+import { fontVariable } from "@/fonts"
+import { siteConfig } from "@/config/site.config"
+import { imagePath, assetPath } from "@typest/nextjs"
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'})
+export const metadata: Metadata = {
+  title: {
+    default: `${siteConfig.name} - ${siteConfig.slogan}`,
+    template: `%s - ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url as string),
+  authors: [
+    {
+      name: siteConfig.nickname,
+      url: `https://x.com/${siteConfig.username}`,
+    },
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: {
+      default: `${siteConfig.name} - ${siteConfig.slogan}`,
+      template: `%s - ${siteConfig.name}`,
+    },
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: `${siteConfig.url}${imagePath("opengraph.png")}`,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: {
+      default: `${siteConfig.name} - ${siteConfig.slogan}`,
+      template: `%s - ${siteConfig.name}`,
+    },
+    description: siteConfig.description,
+    images: [`${siteConfig.url}${imagePath("opengraph.png")}`],
+    creator: `@${siteConfig.username}`,
+  },
+  // icons: imagePath("logo.svg"),
+  manifest: `${siteConfig.url}${assetPath("site.webmanifest")}`,
+}
 
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout(props: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", geist.variable)}
-    >
-      <body>
-        <ThemeProvider>{children}</ThemeProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={fontVariable("antialiased")}>
+        <ThemeProvider>{props.children}</ThemeProvider>
       </body>
     </html>
   )

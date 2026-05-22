@@ -11,8 +11,8 @@
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "clean": "turbo run clean",
-    "run:cli": "pnpm --filter w3docs dev",
-    "run:web": "pnpm --filter web dev",
+    "cli": "pnpm --filter w3docs dev",
+    "web": "pnpm --filter web dev",
     "pushout": "pnpm --filter w3docs pushout",
     "pushout-inc": "pnpm --filter w3docs pushout-inc"
   },

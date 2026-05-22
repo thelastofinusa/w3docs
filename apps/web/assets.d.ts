@@ -13,4 +13,22 @@
  */
 
 declare module "@typest/nextjs" {
+  /* ╔══════════════════╗
+     ║   Image Assets   ║
+     ╚══════════════════╝ */
+  const imageAssets: {
+    readonly "opengraph.png": "/opengraph.png";
+  };
+  type ImageKey = keyof typeof imageAssets;
+  export function imagePath(key: ImageKey): string;
+
+  /* ╔══════════════════╗
+     ║  Generic Assets  ║
+     ╚══════════════════╝ */
+  const genericAssets: {
+    readonly "site.webmanifest": "/site.webmanifest";
+  };
+  type GenericKey = keyof typeof genericAssets;
+  export function assetPath(key: GenericKey): string;
+
 }
