@@ -13,6 +13,7 @@
     "clean": "turbo run clean",
     "cli": "pnpm --filter w3docs dev",
     "web": "pnpm --filter web dev",
+    "demo": "pnpm --filter demo dev",
     "pushout": "pnpm --filter w3docs pushout",
     "pushout-inc": "pnpm --filter w3docs pushout-inc"
   },
