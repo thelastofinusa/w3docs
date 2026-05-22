@@ -13,13 +13,13 @@ const { name, description } = pkg;
 export default async function generateDocs(initialLanguage?: string) {
   const banner = figlet.textSync(name, { font: "ANSI Shadow" });
 
-  console.log(color.green(banner));
+  console.log(color.cyan(banner));
 
   try {
     renderIntro({
-      badge: `Welcome to ${color.bgGreen(` ${name} `)}`,
+      badge: `Welcome to ${color.bgCyan(` ${name} `)}`,
       title: description,
-      iconColor: "green",
+      iconColor: "cyan",
     });
 
     let language = initialLanguage;

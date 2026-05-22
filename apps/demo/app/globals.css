@@ -58,8 +58,108 @@
   --tracking-widest: calc(var(--tracking-normal) + 0.1em);
 }
 
+/**
+
 :root {
-  /* Dark by default — GitHub-ish palette */
+  --background: oklch(0.18 0.015 250);
+  --foreground: oklch(0.96 0.005 250);
+  --card: oklch(0.22 0.018 252);
+  --card-foreground: oklch(0.96 0.005 250);
+  --elevated: oklch(0.26 0.02 252);
+  --popover: oklch(0.22 0.018 252);
+  --popover-foreground: oklch(0.96 0.005 250);
+  --primary: oklch(0.7 0.18 250);
+  --primary-foreground: oklch(0.15 0.02 250);
+  --secondary: oklch(0.28 0.02 252);
+  --secondary-foreground: oklch(0.96 0.005 250);
+  --muted: oklch(0.26 0.018 252);
+  --muted-foreground: oklch(0.7 0.02 250);
+  --accent: oklch(0.32 0.04 252);
+  --accent-foreground: oklch(0.96 0.005 250);
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --success: oklch(0.72 0.18 150);
+  --success-foreground: oklch(0.15 0.02 150);
+  --warning: oklch(0.75 0.17 55);
+  --warning-foreground: oklch(0.15 0.02 55);
+  --info: oklch(0.72 0.14 230);
+  --border: oklch(0.32 0.02 252);
+  --input: oklch(0.3 0.02 252);
+  --ring: oklch(0.7 0.18 250);
+
+  --gradient-hero:
+    radial-gradient(
+      ellipse at top left,
+      oklch(0.72 0.18 250 / 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      oklch(0.72 0.18 150 / 0.12),
+      transparent 60%
+    );
+  --gradient-card-glow: linear-gradient(
+    180deg,
+    oklch(0.72 0.18 250 / 0.05),
+    transparent
+  );
+  --shadow-glow:
+    0 0 0 1px oklch(0.7 0.18 250 / 0.2),
+    0 8px 30px -10px oklch(0.7 0.18 250 / 0.35);
+}
+*/
+
+:root {
+  /* Light theme */
+  --background: oklch(0.98 0.005 250);
+  --foreground: oklch(0.15 0.02 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.02 250);
+  --elevated: oklch(0.96 0.005 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 250);
+  --primary: oklch(0.6 0.18 250);
+  --primary-foreground: oklch(0.98 0.005 250);
+  --secondary: oklch(0.94 0.01 250);
+  --secondary-foreground: oklch(0.2 0.02 250);
+  --muted: oklch(0.94 0.01 250);
+  --muted-foreground: oklch(0.45 0.02 250);
+  --accent: oklch(0.9 0.03 250);
+  --accent-foreground: oklch(0.2 0.02 250);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --success: oklch(0.65 0.18 150);
+  --success-foreground: oklch(0.98 0.005 150);
+  --warning: oklch(0.7 0.17 55);
+  --warning-foreground: oklch(0.98 0.005 55);
+  --info: oklch(0.65 0.14 230);
+  --border: oklch(0.85 0.01 250);
+  --input: oklch(0.9 0.01 250);
+  --ring: oklch(0.6 0.18 250);
+
+  --gradient-hero:
+    radial-gradient(
+      ellipse at top left,
+      oklch(0.6 0.18 250 / 0.1),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      oklch(0.65 0.18 150 / 0.08),
+      transparent 60%
+    );
+  --gradient-card-glow: linear-gradient(
+    180deg,
+    oklch(0.6 0.18 250 / 0.03),
+    transparent
+  );
+  --shadow-glow:
+    0 0 0 1px oklch(0.6 0.18 250 / 0.2),
+    0 8px 30px -10px oklch(0.6 0.18 250 / 0.25);
+}
+
+.dark {
+  /* Dark theme — your original GitHub-ish palette */
   --background: oklch(0.18 0.015 250); /* ~#0d1117 */
   --foreground: oklch(0.96 0.005 250);
   --card: oklch(0.22 0.018 252); /* ~#161b22 */

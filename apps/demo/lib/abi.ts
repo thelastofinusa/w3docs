@@ -1,3 +1,5 @@
+export type TabKey = "read" | "write" | "events"
+
 export type Param = {
   name: string
   type: string

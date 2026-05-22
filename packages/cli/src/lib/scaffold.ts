@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
-import { execSync } from "child_process";
+import { execa } from "execa";
 import color from "chalk";
 import * as p from "@clack/prompts";
 import { fileURLToPath } from "url";
@@ -105,17 +105,16 @@ export async function scaffoldProject(options: ScaffoldOptions) {
   // 3. Install dependencies (real time‑consuming step)
   const pm = detectPackageManager();
   spinner.message(color.cyan(`Installing dependencies with ${pm}`));
-  await sleep(50); // let the spinner render the new message
 
   let installFailed = false;
   try {
-    execSync(`${pm} install`, { cwd: targetDir, stdio: "pipe" });
+    await execa(pm, ["install"], { cwd: targetDir, stdio: "pipe" });
   } catch (error: any) {
     installFailed = true;
   }
 
   if (installFailed) {
-    spinner.stop(color.red("Dependency installation failed"));
+    spinner.error(color.red("Dependency installation failed"));
     p.log.warn(`Installation failed. You can run \`${pm} install\` manually.`);
   } else {
     spinner.stop(color.green("Project generated successfully."));

@@ -6,6 +6,7 @@ import { CodeBlock } from "./code-block"
 import { ParamInput } from "./param-input"
 import { cn } from "@/lib/utils"
 import { Icons } from "hugeicons-proxy"
+import { Button } from "@/components/ui/button"
 
 type Mode = "read" | "write"
 
@@ -35,10 +36,7 @@ export function FunctionCard({
   const accentBg = mode === "read" ? "bg-success/10" : "bg-warning/10"
   const accentBorder =
     mode === "read" ? "border-success/30" : "border-warning/30"
-  const accentBtn =
-    mode === "read"
-      ? "bg-success text-success-foreground hover:bg-success/90"
-      : "bg-warning text-warning-foreground hover:bg-warning/90"
+  const buttonVariant = mode === "read" ? "success" : "warning"
 
   const handleTry = () => {
     if (mode === "read") {
@@ -207,18 +205,19 @@ export function FunctionCard({
 
           <div className="flex flex-wrap items-center gap-3">
             {mode === "write" && !walletConnected ? (
-              <button
+              <Button
+                variant="outline"
                 onClick={() => setWalletConnected(true)}
-                className="inline-flex items-center gap-2 rounded-md border border-warning/40 bg-warning/10 px-3.5 py-2 text-sm font-medium text-warning hover:bg-warning/20"
+                className="border-warning/40 bg-warning/10 text-warning hover:bg-warning/20"
               >
                 <Icons.Wallet05Icon className="size-4" />
-                Connect Wallet to Execute
-              </button>
+                Connect to Execute
+              </Button>
             ) : (
-              <button
+              <Button
+                variant={buttonVariant}
                 onClick={handleTry}
                 disabled={executing}
-                className={`inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-semibold transition-colors disabled:opacity-60 ${accentBtn}`}
               >
                 <Icons.PlayIcon className="size-4" />
                 {executing
@@ -226,7 +225,7 @@ export function FunctionCard({
                   : mode === "write"
                     ? "Execute"
                     : "Try it"}
-              </button>
+              </Button>
             )}
 
             {mode === "write" && (

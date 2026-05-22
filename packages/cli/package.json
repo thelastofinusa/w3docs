@@ -1,6 +1,6 @@
 {
   "name": "w3docs",
-  "version": "0.1.11",
+  "version": "0.1.15",
   "description": "Document smart contracts with ease",
   "private": false,
   "type": "module",
@@ -19,7 +19,7 @@
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist .turbo node_modules",
     "sync-template": "node scripts/sync-template-version.js",
-    "prepublishOnly": "pnpm sync-template && pnpm build",
+    "prepublishOnly": "pnpm build && chmod +x dist/index.js",
     "pushout": "npm publish",
     "pushout-inc": "npm version patch --no-git-tag-version && pnpm pushout"
   },

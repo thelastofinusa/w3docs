@@ -1,44 +1,32 @@
-import { ChevronDown, Radio } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
-import type { EventDef } from "@/lib/abi"
-import { CodeBlock } from "./code-block"
-import { Button } from "@/components/ui/button"
+import { useEffect, useRef, useState } from "react";
 
-function randAddr() {
-  const hex = "0123456789abcdef"
-  let a = "0x"
-  for (let i = 0; i < 40; i++) a += hex[Math.floor(Math.random() * 16)]
-  return a
-}
+import { CodeBlock } from "./code-block";
+import { Button } from "@/components/ui/button";
+import { Icons } from "hugeicons-proxy";
+import { ContractEvent } from "@/types";
 
-export function EventCard({
-  ev,
-  defaultOpen = false,
-}: {
-  ev: EventDef
-  defaultOpen?: boolean
-}) {
-  const [open, setOpen] = useState(defaultOpen)
-  const [listening, setListening] = useState(false)
-  const [logs, setLogs] = useState<string[]>([])
-  const timer = useRef<ReturnType<typeof setInterval> | null>(null)
+export function EventCard({ ev }: { ev: ContractEvent }) {
+  const [open, setOpen] = useState(false);
+  const [listening, setListening] = useState(false);
+  const [logs, setLogs] = useState<string[]>([]);
+  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     if (listening) {
       timer.current = setInterval(() => {
-        const args = ev.params.map((p) =>
+        const args = ev.inputs.map((p) =>
           p.type === "address"
-            ? `"${randAddr()}"`
-            : `"${Math.floor(Math.random() * 1e18)}"`
-        )
-        const line = `${new Date().toLocaleTimeString()}  ${ev.name}(${args.join(", ")})`
-        setLogs((l) => [line, ...l].slice(0, 5))
-      }, 1500)
+            ? `"0x${Math.random().toString(16).slice(2, 10)}..."`
+            : `"${Math.floor(Math.random() * 1e18)}"`,
+        );
+        const line = `${new Date().toLocaleTimeString()}  ${ev.name}(${args.join(", ")})`;
+        setLogs((l) => [line, ...l].slice(0, 5));
+      }, 1500);
     }
     return () => {
-      if (timer.current) clearInterval(timer.current)
-    }
-  }, [listening, ev])
+      if (timer.current) clearInterval(timer.current);
+    };
+  }, [listening, ev]);
 
   return (
     <div
@@ -52,10 +40,7 @@ export function EventCard({
           EVENT
         </span>
         <span className="font-mono text-sm font-semibold">{ev.name}</span>
-        <span className="hidden text-sm text-muted-foreground md:inline">
-          {ev.description}
-        </span>
-        <ChevronDown
+        <Icons.ArrowDown01Icon
           className={`ml-auto h-4 w-4 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`}
         />
       </button>
@@ -70,7 +55,7 @@ export function EventCard({
               Indexed parameters
             </div>
             <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
-              {ev.params.map((p) => (
+              {ev.inputs.map((p) => (
                 <div
                   key={p.name}
                   className="rounded-md border border-border bg-background/60 px-3 py-2"
@@ -99,8 +84,8 @@ export function EventCard({
             <Button
               variant={listening ? "outline" : "info"}
               onClick={() => {
-                setListening((l) => !l)
-                if (listening) setLogs([])
+                setListening((l) => !l);
+                if (listening) setLogs([]);
               }}
               className={
                 listening
@@ -113,7 +98,7 @@ export function EventCard({
                   className={`absolute inline-flex h-2 w-2 rounded-full ${listening ? "pulse-dot bg-success" : "bg-current opacity-60"}`}
                 />
               </span>
-              <Radio className="h-4 w-4" />
+              <Icons.RadioIcon className="h-4 w-4" />
               {listening ? "Listening live" : "Listen for events"}
             </Button>
             {listening && (
@@ -135,5 +120,5 @@ export function EventCard({
         </div>
       )}
     </div>
-  )
+  );
 }

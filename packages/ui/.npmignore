@@ -1,6 +1,0 @@
-.turbo
-node_modules/
-src/
-templates/
-tsconfig.json
-tsup.config.ts

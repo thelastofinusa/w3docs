@@ -2,8 +2,7 @@
 title: {{title}}
 ---
 
-import { ContractExplorer } from '@w3docs/ui'
+import { ContractExplorer } from '@/components/contract-explorer'
+import contractData from '../.w3docs/contract.json'
 
-# {{title}}
-
-<ContractExplorer />
+<ContractExplorer contract={contractData} />
