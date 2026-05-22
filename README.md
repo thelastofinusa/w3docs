@@ -1,5 +1,5 @@
 <p align="center" style="margin-top: 20px;">
-  <img src="https://w3docs.vercel.app/favicon.ico" alt="PushAI logo" width="64" height="64" />
+  <img src="https://w3docs.vercel.app/logo-black.png" alt="PushAI logo" width="64" height="64" />
 </p>
 
 <h1 align="center">w3docs</h1>
