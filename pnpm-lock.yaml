@@ -82,8 +82,8 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       '@w3docs/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: ^0.2.5
+        version: 0.2.5(@noble/hashes@1.8.0)(typescript@5.9.3)(zod@4.4.3)
       chalk:
         specifier: ^5.6.2
         version: 5.6.2
@@ -2529,6 +2529,9 @@ packages:
     resolution: {integrity: sha512-HFwnGgfl1UG07r+PyJNdo2aPbT20GEJwvFTao/Ti1X7C7xF5kSg+AU2NSAWg6oMcURy4yVXa8b9bhE49F5Zd1g==}
     peerDependencies:
       next: '>=13.0.0'
+
+  '@w3docs/core@0.2.5':
+    resolution: {integrity: sha512-2OJHqMoTZV07xx+lQyl5ttGyoUSiKQ4L/ciO9rGKcTiflENSinRycb8xmnQzq2AR2v3l1SCIF8XWUMQZfx+pBg==}
 
   abitype@1.2.4:
     resolution: {integrity: sha512-dpKH+N27vRjarMVTFFkeY445VTKftzGWpL0FiT7xmVmzQRKazZexzC5uHG0f6XKsVLAuUlndnbGau6lRejClxg==}
@@ -6927,6 +6930,17 @@ snapshots:
     dependencies:
       '@typest/core': 1.0.4
       next: 16.1.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+
+  '@w3docs/core@0.2.5(@noble/hashes@1.8.0)(typescript@5.9.3)(zod@4.4.3)':
+    dependencies:
+      '@shazow/whatsabi': 0.26.0(@noble/hashes@1.8.0)(typescript@5.9.3)(zod@4.4.3)
+      ethers: 6.16.0
+    transitivePeerDependencies:
+      - '@noble/hashes'
+      - bufferutil
+      - typescript
+      - utf-8-validate
+      - zod
 
   abitype@1.2.4(typescript@5.9.3)(zod@4.4.3):
     optionalDependencies:

@@ -40,6 +40,7 @@ interface ScaffoldOptions {
   spinner: ReturnType<typeof p.spinner>
   contractData?: string
   rawAbi?: string
+  description?: string
 }
 
 function detectPackageManager(): string {
@@ -73,6 +74,7 @@ export async function scaffoldProject(options: ScaffoldOptions) {
     spinner,
     contractData,
     rawAbi,
+    description,
   } = options
 
   // 1. Verify template exists
@@ -88,8 +90,7 @@ export async function scaffoldProject(options: ScaffoldOptions) {
   const values = {
     projectName: displayName,
     title: title || displayName,
-    description:
-      "Interactive documentation generated from the contract ABI. Inspect read methods, simulate writes, and listen to events — all from one place.",
+    description: description as string,
     chain,
     address,
     verified: String(verified),
@@ -173,18 +174,13 @@ export async function scaffoldProject(options: ScaffoldOptions) {
 
   spinner.stop(chalk.green("Dependencies installed"))
 
-  // 4. Start dev server
-  spinner.start(chalk.cyan("Starting development server"))
-
   try {
     await execa(pm, ["run", "dev"], {
       cwd: targetDir,
       stdio: "inherit",
       preferLocal: true,
     })
-    spinner.stop(chalk.green("Development server started"))
   } catch (error: any) {
-    spinner.stop(chalk.red("Development server exited"))
     p.log.error(error.message)
   }
 

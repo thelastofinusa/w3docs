@@ -1,3 +1,5 @@
+// 0x1B76Fa05C76fB0B482C408c3380CD403a73a7E28
+// 11155420
 import path from "path"
 import chalk from "chalk"
 import fs from "fs-extra"
@@ -8,9 +10,6 @@ import { CONTRACT_TYPES } from "../lib/constants"
 import { scaffoldProject } from "../lib/scaffold"
 import { createSpinner, renderIntro } from "../lib/utils"
 import pkg from "../../package.json" with { type: "json" }
-
-// 0x1B76Fa05C76fB0B482C408c3380CD403a73a7E28
-// 11155420
 
 const { name, description } = pkg
 
@@ -204,18 +203,18 @@ export default async function generateDocs(initialLanguage?: string) {
 
     // Now targetDir either didn't exist or has been cleared
 
-    // -------- Fetch contract data --------
-
+    // -------- Fetch contract data (Sourcify only) --------
     const spinner = createSpinner()
 
     let contractData: string | undefined
     let rawAbi: string | undefined
     let contractName = displayName
+    let contractDescription =
+      "Interactive documentation generated from the contract ABI. Inspect read methods, simulate writes, and listen to events — all from one place."
 
     const isCustomChain = !isNaN(Number(chain))
 
     spinner.start(chalk.cyan("Resolving contract metadata"))
-
     try {
       const result = isCustomChain
         ? await fetchEVMContractByChainId(Number(chain), address)
@@ -224,6 +223,7 @@ export default async function generateDocs(initialLanguage?: string) {
       contractData = JSON.stringify(result.contract, null, 2)
       rawAbi = JSON.stringify(result.rawAbi, null, 2)
       contractName = result.contract.name
+      contractDescription = result.contract.description || ""
 
       spinner.stop(chalk.green("Contract metadata resolved"))
     } catch (error: any) {
@@ -246,6 +246,25 @@ export default async function generateDocs(initialLanguage?: string) {
       )
     }
 
+    // ----- Ask for a description -----
+    const userDescription = await p.text({
+      message: "What is this contract about? (short description)",
+      placeholder: "A simple counter contract",
+      defaultValue: contractDescription,
+    })
+
+    if (!p.isCancel(userDescription)) {
+      const desc = (userDescription as string)?.trim() || contractDescription
+      contractDescription = desc
+
+      // Embed description into contractData if we have real data
+      if (contractData) {
+        const parsed = JSON.parse(contractData)
+        parsed.description = desc
+        contractData = JSON.stringify(parsed, null, 2)
+      }
+    }
+
     // -------- Scaffold the project --------
     try {
       await scaffoldProject({
@@ -259,6 +278,7 @@ export default async function generateDocs(initialLanguage?: string) {
         spinner,
         contractData,
         rawAbi,
+        description: contractDescription, // pass description for sample fallback
       })
     } catch (error: any) {
       spinner.stop(chalk.red("Failed"))

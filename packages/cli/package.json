@@ -1,6 +1,6 @@
 {
   "name": "w3docs",
-  "version": "0.2.4",
+  "version": "0.2.6",
   "description": "Document smart contracts with ease",
   "private": false,
   "type": "module",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@clack/prompts": "^1.4.0",
-    "@w3docs/core": "^0.2.4",
+    "@w3docs/core": "^0.2.6",
     "chalk": "^5.6.2",
     "commander": "^14.0.3",
     "execa": "^9.6.1",
