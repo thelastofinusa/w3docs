@@ -7,6 +7,21 @@ const fontSans = localFont({
   preload: true,
 })
 
+const fontSerif = localFont({
+  src: [
+    {
+      path: "./PTSerif/PTSerif-Regular.ttf",
+      weight: "400",
+    },
+    {
+      path: "./PTSerif/PTSerif-Bold.ttf",
+      weight: "700",
+    },
+  ],
+  variable: "--font-serif",
+  preload: true,
+})
+
 const fontMono = localFont({
   src: "./JetBrainsMono/JetBrainsMono-VariableFont_wght.ttf",
   variable: "--font-mono",
@@ -14,4 +29,4 @@ const fontMono = localFont({
 })
 
 export const fontVariable = (className?: string) =>
-  cn(fontSans.variable, fontMono.variable, className)
+  cn(fontSans.variable, fontSerif.variable, fontMono.variable, className)
