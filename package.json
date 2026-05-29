@@ -10,7 +10,8 @@
     "typecheck": "turbo typecheck",
     "run:cli": "pnpm --filter w3xp start",
     "run:web": "pnpm --filter web dev",
-    "sync:pkg": "node scripts/sync-package-version.js"
+    "sync:pkg": "node scripts/sync-package-version.js",
+    "pushout": "pnpm -r pushout"
   },
   "devDependencies": {
     "prettier": "^3.8.1",

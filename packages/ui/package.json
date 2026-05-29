@@ -1,7 +1,7 @@
 {
-  "name": "@w3xp/core",
+  "name": "@w3xp/ui",
   "version": "0.1.2",
-  "description": "Core package for w3xp",
+  "description": "Component UI elements for w3xp",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -15,24 +15,9 @@
     "name": "Holiday",
     "url": "https://thelastofinusa.vercel.app"
   },
-  "dependencies": {
-    "viem": "^2.51.0"
-  },
   "devDependencies": {
     "@types/node": "^25.9.1",
     "tsup": "^8.5.1",
     "typescript": "5.9.3"
-  },
-  "exports": {
-    "./solidity": {
-      "types": "./dist/solidity/index.d.ts",
-      "import": "./dist/solidity/index.js"
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
   }
 }
