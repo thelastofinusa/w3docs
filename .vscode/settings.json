@@ -1,3 +1,17 @@
 {
-  "cSpell.words": ["connectkit", "pushout", "typest", "viem", "wagmi"]
+  "cSpell.words": [
+    "devnet",
+    "esbuild",
+    "normalise",
+    "opsz",
+    "pushout",
+    "solana",
+    "sourcify",
+    "starknet",
+    "tsup",
+    "typest",
+    "viem",
+    "wdth",
+    "wght"
+  ]
 }

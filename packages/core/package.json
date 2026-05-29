@@ -1,31 +1,38 @@
 {
-  "name": "@w3docs/core",
-  "version": "0.3.3",
-  "type": "module",
+  "name": "@w3xp/core",
+  "version": "0.1.0",
+  "description": "Core package for w3xp",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "build": "tsup",
+    "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
-    "pushout": "npm publish",
+    "pushout": "npm publish --access public",
     "pushout-inc": "npm version patch --no-git-tag-version && pnpm pushout"
   },
+  "author": {
+    "name": "Holiday",
+    "url": "https://thelastofinusa.vercel.app"
+  },
+  "dependencies": {
+    "viem": "^2.51.0"
+  },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "tsup": "^8.0.0",
-    "typescript": "^5.5.0"
+    "@types/node": "^25.9.1",
+    "tsup": "^8.5.1",
+    "typescript": "5.9.3"
   },
   "exports": {
-    "./evm": "./dist/evm/index.js",
-    "./types": "./dist/types/index.js"
+    "./solidity": {
+      "types": "./dist/solidity/index.d.ts",
+      "import": "./dist/solidity/index.js"
+    }
   },
   "files": [
     "dist"
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@shazow/whatsabi": "^0.26.0",
-    "ethers": "^6.16.0"
   }
 }

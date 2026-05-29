@@ -1,8 +1,0 @@
-src/
-components.json
-eslint.config.js
-tsconfig.json
-tsconfig.lint.json
-turbo/
-node_modules/
-.turbo

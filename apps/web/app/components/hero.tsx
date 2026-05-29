@@ -1,17 +1,18 @@
 "use client"
 import React, { useEffect, useMemo, useState } from "react"
 import { TerminalBlock } from "./terminal"
-import { Button, buttonVariants } from "@w3docs/ui/components/button"
+
 import { siteConfig } from "@/config/site.config"
 import Image from "next/image"
 import { imagePath } from "@typest/nextjs"
-import { containerVariants } from "@w3docs/ui/components/shared/container"
 import { useTheme } from "next-themes"
 import { FiMoon } from "react-icons/fi"
 import { MdOutlineWbSunny } from "react-icons/md"
 import { SiNpm } from "react-icons/si"
 import Link from "next/link"
 import { IoIosGitCommit } from "react-icons/io"
+import { containerVariants } from "@/components/container"
+import { Button, buttonVariants } from "@/components/ui/button"
 
 type Stats = {
   downloads: string
@@ -31,6 +32,7 @@ export const Hero = () => {
   })
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
 
     async function loadStats() {
@@ -159,10 +161,10 @@ export const Hero = () => {
       </p>
 
       <div className="mt-10 space-y-3">
-        <TerminalBlock label="Quick start" command="npx w3docs@latest init" />
+        <TerminalBlock label="Quick start" command="npx w3xp init" />
         <TerminalBlock
           label="Global install"
-          command={"npm install -g w3docs@latest\nw3docs init"}
+          command={"npm install -g w3xp\nw3xp init"}
         />
       </div>
     </section>

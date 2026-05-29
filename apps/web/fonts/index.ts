@@ -1,5 +1,5 @@
-import { cn } from "@w3docs/ui/lib/utils"
 import localFont from "next/font/local"
+import { cn } from "../lib/utils"
 
 const fontSans = localFont({
   src: "./BricolageGrotesque/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf",

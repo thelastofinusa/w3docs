@@ -1,23 +1,23 @@
+import { containerVariants } from "@/components/container"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@w3docs/ui/components/accordion"
-import { containerVariants } from "@w3docs/ui/components/shared/container"
+} from "@/components/ui/accordion"
 
 const items = [
   {
-    q: "What is w3docs?",
-    a: "w3docs is a small CLI that turns a deployed smart contract into a complete, interactive documentation website — read calls, write calls, events, and ABI references included.",
+    q: "What is w3xp?",
+    a: "w3xp is a CLI that turns deployed smart contracts into explorer-first interfaces with typed function panels, wallet-connected writes, event feeds, and ABI references.",
   },
   {
     q: "Does it support verified contracts?",
-    a: "Yes. For verified contracts on supported explorers, w3docs pulls source files and natspec to enrich the generated pages. Unverified contracts still produce a usable site from the ABI alone.",
+    a: "Yes. For verified contracts on supported explorers, w3xp pulls source files and natspec to enrich generated interfaces. Unverified contracts still produce a usable interface from ABI data alone.",
   },
   {
-    q: "Can I customize the generated website?",
-    a: "The output is a regular Next.js project with MDX support. Override the theme, layout, or any individual component in your own repository — your changes survive regeneration.",
+    q: "Can I customize the generated interface?",
+    a: "Yes. The output is a regular Next.js project with MDX support. Override themes, layout, or individual components in your own repository, and keep those edits across regenerations.",
   },
   {
     q: "Is wallet interaction supported?",
@@ -42,18 +42,19 @@ export const FAQs = () => {
           Frequently Asked Questions
         </h2>
         <p className="mt-4 max-w-xl text-sm text-muted-foreground sm:text-base">
-          if you don't see your question here, let us know on GitHub or Twitter.
+          if you don&apos;t see your question here, let us know on GitHub or
+          Twitter.
         </p>
       </div>
 
       <Accordion
-        type="multiple"
+        itemType="multiple"
         defaultValue={["item-0"]}
         className="mt-10 px-5 sm:mt-12 sm:px-6"
       >
         {items.map((it, i) => (
           <AccordionItem key={it.q} value={`item-${i}`}>
-            <AccordionTrigger className="py-3 font-serif text-base text-lg tracking-tight text-foreground hover:no-underline">
+            <AccordionTrigger className="py-3 font-serif text-lg tracking-tight text-foreground hover:no-underline">
               {it.q}
             </AccordionTrigger>
             <AccordionContent className="text-[14px] leading-relaxed text-muted-foreground">

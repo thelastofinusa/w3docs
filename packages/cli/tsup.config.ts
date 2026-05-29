@@ -1,4 +1,4 @@
-import { defineConfig } from "tsup"
+import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: ["src/index.ts"],
@@ -8,15 +8,4 @@ export default defineConfig({
   banner: {
     js: "#!/usr/bin/env node",
   },
-  external: [
-    "fs-extra",
-    "handlebars",
-    "execa",
-    "chalk",
-    "commander",
-    "figlet",
-    "gradient-string",
-    "ora",
-    "@inquirer/prompts",
-  ],
-})
+});

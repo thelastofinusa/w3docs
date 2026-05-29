@@ -1,17 +1,9 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "skipLibCheck": true,
+    "types": ["node"],
     "outDir": "dist",
     "rootDir": "src"
   },
-  "include": ["src", "../cli/src/lib/chains.ts"]
+  "include": ["src", "package.json"]
 }

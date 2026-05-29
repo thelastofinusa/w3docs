@@ -1,9 +1,7 @@
 import { Metadata } from "next"
-import { imagePath, assetPath } from "@typest/nextjs"
+import { assetPath, imagePath } from "@typest/nextjs"
 
-// Suppress missing type declarations for this side-effect style import
-// @ts-ignore
-import "@w3docs/ui/styles"
+import "./globals.css"
 import { fontVariable } from "@/fonts"
 import { siteConfig } from "@/config/site.config"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -68,7 +66,7 @@ export const metadata: Metadata = {
 export default function RootLayout(props: LayoutProps<"/">) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={fontVariable("antialiased")}>
+      <body className={fontVariable("font-sans antialiased")}>
         <ThemeProvider>{props.children}</ThemeProvider>
       </body>
     </html>

@@ -1,46 +1,40 @@
 {
-  "name": "w3docs",
-  "version": "0.3.2",
-  "description": "Document smart contracts with ease",
-  "private": false,
+  "name": "w3xp",
+  "version": "0.1.1",
+  "description": "Explorer-first interfaces for smart contracts.",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "w3docs": "./dist/index.js"
+    "w3xp": "./dist/index.js"
   },
-  "files": [
-    "dist",
-    "templates"
-  ],
   "scripts": {
     "build": "tsup",
-    "start": "pnpm build && node dist/index.js",
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf .turbo dist node_modules",
-    "sync-template": "node scripts/sync-template-version.js",
-    "prepublishOnly": "pnpm sync-template && pnpm build",
+    "start": "pnpm build && node dist/index.js",
     "pushout": "npm publish",
     "pushout-inc": "npm version patch --no-git-tag-version && pnpm pushout"
   },
+  "author": {
+    "name": "Holiday",
+    "url": "https://thelastofinusa.vercel.app"
+  },
   "dependencies": {
     "@clack/prompts": "^1.4.0",
-    "@w3docs/core": "^0.3.3",
+    "@w3xp/core": "^0.1.0",
     "chalk": "^5.6.2",
     "commander": "^14.0.3",
     "execa": "^9.6.1",
     "figlet": "^1.11.0",
     "fs-extra": "^11.3.5",
-    "gradient-string": "^3.0.0",
     "handlebars": "^4.7.9"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.0.0",
-    "tsup": "^8.0.0",
+    "@types/node": "^25.9.1",
+    "tsup": "^8.5.1",
     "tsx": "^4.22.3",
-    "typescript": "^5.5.0",
-    "@w3docs/eslint-config": "workspace:*",
-    "@w3docs/typescript-config": "workspace:*"
+    "typescript": "5.9.3"
   }
 }

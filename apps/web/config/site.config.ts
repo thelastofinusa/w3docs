@@ -1,12 +1,12 @@
 export const siteConfig = {
-  name: "w3docs",
-  slogan: "Interactive documentation for deployed smart contracts.",
+  name: "w3xp",
+  slogan: "Explorer-first interfaces for smart contracts.",
   username: "thelastofinusa",
   nickname: "Holiday",
   description:
-    "A CLI tool that generates interactive smart contract documentation websites directly from deployed contracts.",
+    "A CLI that turns deployed contracts into explorer-first interfaces with live reads, wallet-powered writes, and event timelines.",
   url:
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://w3docs.vercel.app",
+      : "https://w3xp.vercel.app",
 }

@@ -21,7 +21,7 @@ export const TerminalBlock: React.FC<Props> = ({ label, command }) => {
   }
 
   return (
-    <div className="group relative rounded-lg border border-border bg-card/60">
+    <div className="group relative flex-1 rounded-lg border border-border bg-card">
       {label && (
         <div className="px-4 pt-3 text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
           {label}

@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site.config"
-import { containerVariants } from "@w3docs/ui/components/shared/container"
+import { containerVariants } from "@/components/container"
 
 export const Footer = () => {
   return (
